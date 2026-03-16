@@ -12,6 +12,35 @@ from sklearn.model_selection import train_test_split
 # --- CONFIGURAÇÕES DA PÁGINA ---
 st.set_page_config(page_title="Industrial Data Intelligence v4.7", layout="wide")
 
+# --- SISTEMA DE ACESSO RESTRITO ---
+def check_password():
+    """Retorna True se o utilizador introduziu a senha correta."""
+    if "password_correct" not in st.session_state:
+        st.session_state["password_correct"] = False
+
+    if st.session_state["password_correct"]:
+        return True
+
+    # Interface de Login
+    st.markdown("### 🔒 Acesso Restrito - Industrial Data Intelligence")
+    password = st.text_input("Introduza a senha de acesso para auditoria:", type="password")
+    
+    # Busca a senha nas Secrets do Streamlit (veremos abaixo)
+    # Se quiser testar localmente antes, pode trocar st.secrets["password"] por "12345"
+    if st.button("Aceder"):
+        if password == st.secrets["password"]:
+            st.session_state["password_correct"] = True
+            st.rerun()
+        else:
+            st.error("⚠️ Senha incorreta. Acesso negado.")
+    return False
+
+# Executa a verificação
+if not check_password():
+    st.stop()  # Para a execução aqui se a senha não estiver correta
+
+# --- O RESTO DO SEU CÓDIGO (st.title, sidebar, etc.) COMEÇA AQUI ---
+
 # --- MOTOR DE MACHINE LEARNING PREDITIVO ---
 def run_predictive_ml(df, target_var, cols_to_exclude):
     df_ml = df.select_dtypes(include=[np.number]).copy()
