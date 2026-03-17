@@ -85,8 +85,8 @@ def calculate_cpk(data, target_col, lse, lsi):
     }
 
 # --- INTERFACE ---
-st.title("🏭 AUDITOR 360º: Inteligência de Precisão")
-st.markdown("#### *Decodificação Avançada de Dados e Controle Estatístico de Alta Performance.*")
+st.title("🏭 Inteligência de Precisão de Usinagem com IA")
+st.markdown("#### *Análise Avançada de Dados Industriais e Controle Estatístico de Alta Performance.*")
 st.divider()
 
 with st.sidebar:
