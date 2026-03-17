@@ -85,8 +85,8 @@ def calculate_cpk(data, target_col, lse, lsi):
     }
 
 # --- INTERFACE ---
-st.title("🏭 Industrial Data Intelligence v4.7")
-st.markdown("#### *Rastreabilidade IATF 16949 e Decodificação de Dados Multi-Sistemas.*")
+st.title("🏭 AUDITOR 360º: Inteligência de Precisão")
+st.markdown("#### *Decodificação avançada de dados e controle estatístico de alta performance.*")
 st.divider()
 
 with st.sidebar:
