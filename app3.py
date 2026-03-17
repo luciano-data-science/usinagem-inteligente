@@ -85,7 +85,7 @@ def calculate_cpk(data, target_col, lse, lsi):
     }
 
 # --- INTERFACE ---
-st.title("🏭 Inteligência de Precisão de Usinagem com IA")
+st.title("🎯 Inteligência de Precisão de Usinagem com IA")
 st.markdown("#### *Análise Avançada de Dados Industriais e Controle Estatístico de Alta Performance.*")
 st.divider()
 
@@ -142,7 +142,7 @@ if uploaded_file:
 
         numeric_cols = df_clean.select_dtypes(include=[np.number]).columns.tolist()
         if numeric_cols:
-            st.subheader("⚙️ Configuração da Auditoria")
+            st.subheader("⚙️ Seletor de Variáveis")
             c1, c2, c3 = st.columns(3)
             target_var = c1.selectbox("Variável Alvo", numeric_cols)
             v_lsi = float(pd.to_numeric(specs["LSI"].get(target_var), errors='coerce') or df_clean[target_var].min())
@@ -150,7 +150,7 @@ if uploaded_file:
             lsi = c2.number_input("LSI", value=v_lsi, format="%.3f")
             lse = c3.number_input("LSE", value=v_lse, format="%.3f")
 
-            if st.button("🚀 Iniciar Auditoria 360°"):
+            if st.button("🚀 Iniciar Análise Avançada"):
                 cols_excluir = ['Ora', 'ID Pezzo']
                 stats = calculate_cpk(df_clean, target_var, lse, lsi)
                 model, importances, ml_score = run_predictive_ml(df_clean, target_var, cols_excluir)
@@ -158,7 +158,7 @@ if uploaded_file:
                 
                 # DASHBOARD CONSOLIDADO
                 st.divider()
-                st.subheader("📈 Indicadores Consolidados")
+                st.subheader("📈 Indicadores de Performance")
                 m1, m2, m3, m4, m5 = st.columns(5)
                 m1.metric("Amostra Total", f"{stats['total']}")
                 m2.metric("Capabilidade (Cpk)", f"{stats['cpk']:.3f}")
@@ -235,6 +235,6 @@ if uploaded_file:
                 save_to_pdf(fig_corr, "4. Correlacao Global Filtrada")
                 if importances is not None: save_to_pdf(fig_ml, "5. Ranking de Influencia IA")
                 
-                st.download_button("📥 Baixar Relatório IATF v4.7", bytes(pdf.output()), f"Relatorio_Auditoria_{target_var}.pdf", "application/pdf")
+                st.download_button("📥 Baixar Relatório Técnico", bytes(pdf.output()), f"Relatorio_Auditoria_{target_var}.pdf", "application/pdf")
 
     except Exception as e: st.error(f"Erro Crítico: {e}")
