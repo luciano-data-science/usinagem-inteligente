@@ -85,7 +85,7 @@ def calculate_cpk(data, target_col, lse, lsi):
     }
 
 # --- INTERFACE ---
-st.title("🎯 Precision AI: Inteligência de Usinagem")
+st.title("🎯 Precision AI: Inteligência de Usinagem Streparava")
 st.markdown("""
     ### Análise Avançada de Dados Industriais e Controle Estatístico
     *Rastreabilidade IATF 16949 & Predição de Causa Raiz com Machine Learning*
