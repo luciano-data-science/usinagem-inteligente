@@ -238,11 +238,18 @@ if uploaded_file:
                 save_to_pdf(fig_corr, "4. Matriz de Correlacao Global")
                 if importances is not None: save_to_pdf(fig_ml, "5. Ranking de Influência gerado por IA")
                 
+                # --- RODAPÉ DO RELATÓRIO PDF ---
+                pdf.add_page() # Opcional: ou apenas adicione ao final da última página
+                pdf.ln(10)
+                pdf.set_font("Helvetica", 'I', 8)
+                pdf.set_text_color(128, 128, 128) # Cor cinza para um visual profissional
+                footer_text = "Powered by Luciano Martins Teixeira - Industrial Data Intelligence Consultant - LOGI SERVICE DO BRASIL - 2026"
+                pdf.cell(0, 10, footer_text, ln=True, align='C')
                 st.download_button("📥 Baixar Relatório Técnico", bytes(pdf.output()), f"Relatorio_Auditoria_{target_var}.pdf", "application/pdf")
 
     except Exception as e: st.error(f"Erro Crítico: {e}")
 
-    # --- RODAPÉ DA PÁGINA ---
+# --- RODAPÉ DA PÁGINA ---
 st.divider()
 st.markdown(
     """
