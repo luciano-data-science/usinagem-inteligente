@@ -10,7 +10,7 @@ from sklearn.ensemble import RandomForestRegressor
 from sklearn.model_selection import train_test_split
 
 # --- CONFIGURAÇÕES DA PÁGINA ---
-st.set_page_config(page_title="AUDITOR 360º: Inteligência de Precisão", layout="wide")
+st.set_page_config(page_title="Inteligência de Dados Industriais", layout="wide")
 
 # --- SISTEMA DE ACESSO RESTRITO ---
 def check_password():
