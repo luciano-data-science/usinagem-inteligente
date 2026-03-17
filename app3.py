@@ -201,7 +201,7 @@ if uploaded_file:
                 # --- PDF v4.7 ---
                 pdf = FPDF()
                 pdf.add_page()
-                pdf.set_font("Helvetica", 'B', 16); pdf.cell(0, 10, "Relatorio de Auditoria Industrial 360", ln=True, align='C')
+                pdf.set_font("Helvetica", 'B', 16); pdf.cell(0, 10, "Relatorio de Inteligência de Dados Industriais", ln=True, align='C')
                 
                 # SEÇÃO RASTREABILIDADE
                 pdf.ln(5); pdf.set_font("Helvetica", 'B', 12); pdf.set_fill_color(230, 230, 230)
@@ -231,9 +231,9 @@ if uploaded_file:
                     pdf.image(buf, x=15, w=175); return buf
 
                 save_to_pdf(fig_h, "2. Grafico de Capabilidade")
-                save_to_pdf(fig_c, "3. Carta de Controle")
-                save_to_pdf(fig_corr, "4. Correlacao Global Filtrada")
-                if importances is not None: save_to_pdf(fig_ml, "5. Ranking de Influencia IA")
+                save_to_pdf(fig_c, "3. Carta de Controle & Análise de Tendência")
+                save_to_pdf(fig_corr, "4. Matriz de Correlacao Global")
+                if importances is not None: save_to_pdf(fig_ml, "5. Ranking de Influência gerado por IA")
                 
                 st.download_button("📥 Baixar Relatório Técnico", bytes(pdf.output()), f"Relatorio_Auditoria_{target_var}.pdf", "application/pdf")
 
