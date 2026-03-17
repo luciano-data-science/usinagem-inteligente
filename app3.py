@@ -10,7 +10,7 @@ from sklearn.ensemble import RandomForestRegressor
 from sklearn.model_selection import train_test_split
 
 # --- CONFIGURAÇÕES DA PÁGINA ---
-st.set_page_config(page_title="Inteligência de Dados Industriais", layout="wide")
+st.set_page_config(page_title="Precision AI v1.0", layout="wide")
 
 # --- SISTEMA DE ACESSO RESTRITO ---
 def check_password():
@@ -85,8 +85,11 @@ def calculate_cpk(data, target_col, lse, lsi):
     }
 
 # --- INTERFACE ---
-st.title("🎯 Inteligência de Precisão de Usinagem com IA")
-st.markdown("#### *Análise Avançada de Dados Industriais e Controle Estatístico de Alta Performance.*")
+st.title("🎯 Precision AI: Inteligência de Usinagem")
+st.markdown("""
+    ### Análise Avançada de Dados Industriais e Controle Estatístico
+    *Rastreabilidade IATF 16949 & Predição de Causa Raiz com Machine Learning*
+""")
 st.divider()
 
 with st.sidebar:
@@ -238,3 +241,15 @@ if uploaded_file:
                 st.download_button("📥 Baixar Relatório Técnico", bytes(pdf.output()), f"Relatorio_Auditoria_{target_var}.pdf", "application/pdf")
 
     except Exception as e: st.error(f"Erro Crítico: {e}")
+
+    # --- RODAPÉ DA PÁGINA ---
+st.divider()
+st.markdown(
+    """
+    <div style='text-align: center; color: grey; font-size: 0.8em;'>
+        Powered by Luciano Martins Teixeira - Industrial Data Intelligence Consultant - 
+        <b>LOGI SERVICE DO BRASIL</b> - 2026
+    </div>
+    """, 
+    unsafe_allow_html=True
+)
