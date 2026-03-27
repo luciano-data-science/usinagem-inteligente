@@ -23,11 +23,11 @@ def check_password():
 
     # Interface de Login
     st.markdown("### 🔒 Acesso Restrito - Industrial Data Intelligence")
-    password = st.text_input("Introduza a senha de acesso para auditoria:", type="password")
+    password = st.text_input("Introduza a senha de acesso para análise:", type="password")
     
     # Busca a senha nas Secrets do Streamlit (veremos abaixo)
     # Se quiser testar localmente antes, pode trocar st.secrets["password"] por "12345"
-    if st.button("Aceder"):
+    if st.button("Acessar"):
         if password == st.secrets["password"]:
             st.session_state["password_correct"] = True
             st.rerun()
@@ -85,7 +85,7 @@ def calculate_cpk(data, target_col, lse, lsi):
     }
 
 # --- INTERFACE ---
-st.title("🎯 Precision AI: Inteligência de Usinagem Streparava")
+st.title("🎯 Precision AI: Inteligência de Usinagem")
 st.markdown("""
     ### Análise Avançada de Dados Industriais e Controle Estatístico
     *Rastreabilidade IATF 16949 & Predição de Causa Raiz com Machine Learning*
@@ -186,7 +186,7 @@ if uploaded_file:
 
                 # MATRIZ E IA
                 st.divider()
-                st.subheader("📈 Matriz de Interdependência")
+                st.subheader("📈 Matriz de Correlação")
                 df_corr = df_clean.select_dtypes(include=[np.number]).copy()
                 cols_remover = [c for c in df_corr.columns if any(ex in c for ex in cols_excluir) or "Unnamed" in c]
                 df_corr = df_corr.drop(columns=cols_remover)
